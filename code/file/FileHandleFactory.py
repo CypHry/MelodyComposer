@@ -12,6 +12,8 @@ class FileHandleFactory:
         ReadOnly = "r"
         WriteOnly = "w+"
 
+    ## @brief createFileHandle
+    #   This is the only method that should be called.
     def createFileHandle(fileMode, fileName):
         cases = {
             FileHandleFactory.FileMode.ReadOnly: FileHandleFactory._createReadOnlyFileHandle,
