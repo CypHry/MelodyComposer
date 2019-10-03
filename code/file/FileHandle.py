@@ -42,7 +42,7 @@ class ReadOnlyFileHandle(FileHandle):
 
 ## @class ReadOnlyFileHandle:
 #   Handle for write only files.
-#   Creates new file if specified not exist.
+#   Creates new file if specified does not exist.
 class WriteOnlyFileHandle(FileHandle):
     def __init__(self, filename):
         super().__init__(filename, "w+")
