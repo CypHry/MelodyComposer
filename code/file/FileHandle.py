@@ -2,8 +2,6 @@
 #   File contains implementation of FileHandle class.
 #   This should be used to operate with files.
 
-# TODO: ReadWriteFileHandle
-
 from abc import ABC, abstractmethod
 
 ## @class FileHandle

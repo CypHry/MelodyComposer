@@ -1,8 +1,6 @@
 ## @file FileHandleFactory.py
 #   This file implements factory for creating FileHandles in a safe way.
 
-# TODO: Add ReadWriteFileHandle
-
 from enum import Enum
 from FileHandle import WriteOnlyFileHandle, ReadOnlyFileHandle
 import os.path
