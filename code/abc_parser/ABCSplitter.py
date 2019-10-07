@@ -9,6 +9,7 @@ from FileHandle import ReadOnlyFileHandle
 # This assume that ABC file first line starts with '[X or some other single character]:'
 # The strings should be validated after the split before using them.
 class ABCSplitter:
+    @staticmethod
     def split(self, fileHandle):
         contentStream = io.StringIO(fileHandle.read())
         infoString = None

@@ -7,6 +7,7 @@ from ABCSplitter import ABCSplitter
 ## @class ABCValidator
 #   ABC file validator.
 class ABCValidator:
+    @staticmethod
     def validate(self, fileHandle):
         infoString, abcString = ABCSplitter.split(fileHandle)
 
@@ -16,8 +17,10 @@ class ABCValidator:
 
     # TODO: Converter needs to be implemented first
     #   Currently I dont know which information is actually needed
-    def _checkInfo(self):
+    @staticmethod
+    def _checkInfo(infoString):
         return True
 
-    def _checkABC(self):
+    @staticmethod
+    def _checkABC(abcString):
         return True
