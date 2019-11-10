@@ -26,7 +26,11 @@ class MusicConverter:
 
     @staticmethod
     def _convertNotesVectorToMusicStream(music):
-        return music
+        musicStream = stream.Stream()
+        for note in music:
+            musicStream.append(MusicConverter._changeNoteToM21Note(note))
+
+        return musicStream
 
     @staticmethod
     def _changeM21NoteToNote(M21Note):
@@ -37,4 +41,21 @@ class MusicConverter:
             pitchVector[int(interval.Interval(note.Note('c3'), M21Note).cents / 100)] = 1
 
         return Note.Note(pitchVector, durationVector)
+
+    @staticmethod
+    def _changeNoteToM21Note(MyNote):
+        if MyNote.pitchVector.count(1) == 1:
+            pitchIndex = MyNote.pitchVector.index(1)
+            durationIndex = MyNote.durationVector.index(1)
+            M21Note = note.Note('c3')
+            M21Note = M21Note.transpose(pitchIndex)
+            M21Note.duration.quarterLength = durationIndex/20
+            return M21Note
+        else:
+            durationIndex = MyNote.durationVector.index(1)
+            rest = note.Rest()
+            rest.duration.quarterLength = durationIndex/20
+            return rest
+
+
 

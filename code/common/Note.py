@@ -3,9 +3,9 @@
 ## @class Note
 class Note:
     def __init__(self):
-        self.pitchVec = None
-        self.durationVec = None
+        self.pitchVector = None
+        self.durationVector = None
 
     def __init__(self, pitchVec, durationVec):
-        self.pitchVec = pitchVec
-        self.durationVec = durationVec
+        self.pitchVector = pitchVec
+        self.durationVector = durationVec
