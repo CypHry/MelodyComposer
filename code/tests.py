@@ -1,6 +1,6 @@
-from common import Tune
+from common import Tune, Note
 
-notesStream = stream.Stream()
-for element in tune.musicStream.parts[0].elements:
-    for noteOrRest in element.elements:
-        notesStream.append(noteOrRest)
+tune = Tune.Tune("/home/cyprian/Documents/ABC/China/Bu_guo")
+for note in tune.notesVector:
+    print(note.durationVec)
+    print(note.pitchVec)

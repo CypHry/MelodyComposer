@@ -1,6 +1,5 @@
 ## @file Tune.py
 
-from Note import Note
 from ABCParser import *
 from FileHandleFactory import FileHandleFactory
 from MusicConverter import *
@@ -18,7 +17,3 @@ class Tune:
     def show(self):
         self.musicStream.show("text")
 
-tune = Tune("/home/cyprian/Documents/ABC/China/Bu_guo")
-for note in tune.notesVector:
-    print(note.durationVec)
-    print(note.pitchVec)
