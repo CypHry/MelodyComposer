@@ -3,6 +3,8 @@
 from ABCParser import *
 from FileHandleFactory import FileHandleFactory
 from MusicConverter import *
+from common import Note
+import keras, np_utils, numpy
 
 class Tune:
     def __init__(self, fileName):
@@ -16,4 +18,17 @@ class Tune:
 
     def show(self):
         self.musicStream.show("text")
+
+    def getNotesAsInts(self):
+        return [note.getIntValue() for note in self.notesVector]
+
+    def getTrainData(self, sequenceLen):
+        notes = [note.getIntValue() for note in self.notesVector]
+        inputVector = []
+        outputVector = []
+        for i in range(len(notes) - sequenceLen):
+            sequence = notes[i:i + sequenceLen]
+            inputVector.append(sequence)
+            outputVector.append(notes[i+sequenceLen])
+        return  keras.utils.np_utils.to_categorical(inputVector), keras.utils.np_utils.to_categorical(outputVector)
 
