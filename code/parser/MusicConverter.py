@@ -36,9 +36,14 @@ class MusicConverter:
     def _changeM21NoteToNote(M21Note):
         pitchVector = [0]*45
         durationVector = [0]*80
+        if int(M21Note.duration.quarterLength*20) >= 80.0:
+            raise Exception("Duration too long")
         durationVector[int(M21Note.duration.quarterLength*20)] = 1
         if M21Note.isClassOrSubclass((note.Note,)):
-            pitchVector[int(interval.Interval(note.Note('c3'), M21Note).cents / 100)] = 1
+            interval_ = int(interval.Interval(note.Note('c3'), M21Note).cents / 100)
+            if interval_ < 0.0 or interval_ > 80.0:
+                raise Exception("Pitch too low")
+            pitchVector[interval_] = 1
 
         return Note.Note(pitchVector, durationVector)
 

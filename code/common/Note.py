@@ -23,3 +23,10 @@ class Note:
         self.pitchVector[int(value/100)] = 1
         self.durationVector[int(value % 100)] = 1
 
+    def getOneHot(self):
+        oneHot = [0]*4580
+        oneHot[self.getIntValue()] = 1
+        return oneHot
+
+    def setOneHot(self, vector):
+        self.setIntValue(vector.index(1))

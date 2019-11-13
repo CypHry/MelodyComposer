@@ -23,12 +23,14 @@ class Tune:
         return [note.getIntValue() for note in self.notesVector]
 
     def getTrainData(self, sequenceLen):
-        notes = [note.getIntValue() for note in self.notesVector]
+        notes = [note.getOneHot() for note in self.notesVector]
+        if len(notes) <= sequenceLen:
+            raise Exception("Piece too short.")
         inputVector = []
         outputVector = []
         for i in range(len(notes) - sequenceLen):
             sequence = notes[i:i + sequenceLen]
             inputVector.append(sequence)
             outputVector.append(notes[i+sequenceLen])
-        return  keras.utils.np_utils.to_categorical(inputVector), keras.utils.np_utils.to_categorical(outputVector)
+        return  inputVector, outputVector
 
