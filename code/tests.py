@@ -2,16 +2,11 @@ from common import TuneLoader, Tune, Note
 from network import NeuralNetwork
 from MusicConverter import *
 import numpy as np
+from music21 import environment
 
-tunes = TuneLoader.TuneLoader("ABC/*")
+environment.set('musicxmlPath', '/bin/musescore3' )
+tunes = TuneLoader.TuneLoader("ABC/abcChina04")
 
-filepath = "weights/weights-ABC-files-tests.hdf5"
-
-input, output = tunes.getTrainData(15)
-input = np.asarray(input, dtype=np.float32)
-output = np.asarray(output, dtype=np.float32)
-network = NeuralNetwork.NeuralNetwork(input.shape)
-network.train(input, output, filepath)
-
+MusicConverter.convert(tunes.tunes[0].notesVector, MUSIC_STREAM).show('musicxml')
 
 
