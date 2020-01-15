@@ -12,21 +12,17 @@ class Note:
         self.pitchVector = pitchVec
         self.durationVector = durationVec
 
-    def getIntValue(self):
-        if(self.pitchVector.count(1)):
-            return 100*self.pitchVector.index(1)+self.durationVector.index(1)
-        return self.durationVector.index(1)
-
-    def setIntValue(self, value):
-        self.pitchVector = [0]*45
-        self.durationVector = [0]*80
-        self.pitchVector[int(value/100)] = 1
-        self.durationVector[int(value % 100)] = 1
-
     def getOneHot(self):
-        oneHot = [0]*4580
-        oneHot[self.getIntValue()] = 1
+        oneHot = [0]*450
+        if self.pitchVector.count(1) == 1:
+            oneHot[10*self.pitchVector.index(1)+self.durationVector.index(1)] = 1
+        else:
+            oneHot[self.durationVector.index(1)] = 1;
+
         return oneHot
 
     def setOneHot(self, vector):
-        self.setIntValue(vector.index(1))
+        index = vector.index(1)
+        self.pitchVector = index/10
+        self.durationVector = index%10
+
