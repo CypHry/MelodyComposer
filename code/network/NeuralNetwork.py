@@ -1,6 +1,7 @@
 from keras.models import Sequential, load_model
 from keras.layers import Dense, LSTM, Dropout, Activation
 import keras, np_utils, numpy
+from common import Note
 
 class NeuralNetwork:
     def __init__(self):
@@ -22,4 +23,14 @@ class NeuralNetwork:
         self.model.save(filepath)
 
     def generate(self, starter):
-        pass
+        melody = []
+        for noteIndex in range(50):
+            input = numpy.reshape(starter, (1, 15, 450))
+            prediction = self.model.predict(input, verbose = 0)
+            index = numpy.argmax(prediction)
+            newNote = Note.Note(prediction, prediction)
+            newNote.setFromIndex(index)
+            melody.append(newNote)
+            starter = starter[1:]
+            starter.append(newNote.getOneHot())
+        return melody

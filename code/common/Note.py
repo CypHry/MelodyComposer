@@ -1,4 +1,7 @@
 ## @file Note.py
+
+import numpy as np
+
 PITCH_VEC_SIZE = 45
 DURATION_VEC_SIZE = 80
 
@@ -23,6 +26,13 @@ class Note:
 
     def setOneHot(self, vector):
         index = vector.index(1)
-        self.pitchVector = index/10
-        self.durationVector = index%10
+        self.pitchVector = [0] * 45
+        self.durationVector = [0] * 10
+        self.pitchVector[int(np.int_(index)/10)] = 1
+        self.durationVector[int(np.int_(index)%10)] = 1
 
+    def setFromIndex(self, index):
+        self.pitchVector = [0] * 45
+        self.durationVector = [0] * 10
+        self.pitchVector[int(np.int_(index)/10)] = 1
+        self.durationVector[int(np.int_(index)%10)] = 1
