@@ -3,10 +3,13 @@ from keras.layers import Dense, LSTM, Dropout, Activation
 import keras, np_utils, numpy
 
 class NeuralNetwork:
-    def __init__(self, filepath):
+    def __init__(self):
+        self.model = Sequential()
+
+    def load_model(self, filepath):
         self.model = load_model(filepath)
 
-    def __init__(self, input_shape):
+    def create_model(self, input_shape):
         self.model = Sequential()
         self.model.add(LSTM(450, input_shape=(input_shape[1], input_shape[2]), return_sequences=True))
         self.model.add(LSTM(450))
