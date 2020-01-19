@@ -15,6 +15,9 @@ class Note:
         self.pitchVector = pitchVec
         self.durationVector = durationVec
 
+    def __eq__(self, other):
+        return self.pitchVector == other.pitchVector and self.durationVector == other.durationVector
+
     def getOneHot(self):
         oneHot = [0]*450
         if self.pitchVector.count(1) == 1:
@@ -36,3 +39,4 @@ class Note:
         self.durationVector = [0] * 10
         self.pitchVector[int(np.int_(index)/10)] = 1
         self.durationVector[int(np.int_(index)%10)] = 1
+

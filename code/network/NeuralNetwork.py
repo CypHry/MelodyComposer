@@ -25,7 +25,7 @@ class NeuralNetwork:
     def generate(self, starter):
         melody = []
         for noteIndex in range(50):
-            input = numpy.reshape(starter, (1, 15, 450))
+            input = numpy.reshape(starter, (1, 5, 450))
             prediction = self.model.predict(input, verbose = 0)
             index = numpy.argmax(prediction)
             newNote = Note.Note(prediction, prediction)
