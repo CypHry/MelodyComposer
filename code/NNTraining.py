@@ -5,9 +5,9 @@ import numpy as np
 
 tunes = TuneLoader.TuneLoader("ABC/*")
 
-filepath = "weights/weights-first-test-training-5notes.hdf5"
+filepath = "weights/3Layers-40epochs-15batch-15notes-withDropout-withRDropout.hdf5"
 
-input, output = tunes.getTrainData(5)
+input, output = tunes.getTrainData(NeuralNetwork.SEQUENCE_LEN)
 input = np.asarray(input, dtype=np.float32)
 output = np.asarray(output, dtype=np.float32)
 network = NeuralNetwork.NeuralNetwork()
