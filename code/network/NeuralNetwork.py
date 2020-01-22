@@ -1,5 +1,5 @@
 from keras.models import Sequential, load_model
-from keras.layers import Dense, LSTM, Dropout, Activation
+from keras.layers import Dense, LSTM, Dropout, Activation, Bidirectional
 import keras, np_utils, numpy
 from common import Note
 
@@ -14,14 +14,14 @@ class NeuralNetwork:
 
     def create_model(self, input_shape):
         self.model = Sequential()
-        self.model.add(CuDNNLSTM(450, input_shape=(input_shape[1], input_shape[2]), return_sequences=True, recurrent_dropout=0.3))
-        self.model.add(CuDNNLSTM(100, dropout=0.4, recurrent_dropout=0.3))
-        self.model.add(Dense(input_shape[2]))
-        self.model.add(Activation('softmax'))
+        self.model.add(Bidirectional(LSTM(450, dropout=0.4, recurrent_dropout=0.3, return_sequences=True)))
+        self.model.add(LSTM(450, input_shape=(input_shape[1], input_shape[2]), recurrent_dropout=0.3))
+        self.model.add(Dense(450))
+        self.model.add(Activation("softmax"))
         self.model.compile(loss='categorical_crossentropy', optimizer='rmsprop')
 
     def train(self, input, output, filepath):
-        self.model.fit(input, output, epochs=65, batch_size=15, verbose=2)
+        self.model.fit(input, output, epochs=35, batch_size=15, verbose=2)
         self.model.save(filepath)
 
     def generate(self, starter):

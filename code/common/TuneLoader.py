@@ -25,3 +25,34 @@ class TuneLoader:
                 print("Tune too short.")
 
         return inputVector, outputVector
+
+    def getTrainData_duration(self, sequenceLen):
+        inputVector = []
+        outputVector = []
+        tempInput = []
+        tempOutput = []
+        for tune in self.tunes:
+            try:
+                tempInput, tempOutput = tune.getTrainData_noteDuration(sequenceLen)
+                inputVector.extend(tempInput)
+                outputVector.extend(tempOutput)
+            except:
+                print("Tune too short.")
+
+        return inputVector, outputVector
+
+    def getTrainData_pitch(self, sequenceLen):
+        inputVector = []
+        outputVector = []
+        tempInput = []
+        tempOutput = []
+        for tune in self.tunes:
+            try:
+                tempInput, tempOutput = tune.getTrainData_notePitch(sequenceLen)
+                inputVector.extend(tempInput)
+                outputVector.extend(tempOutput)
+            except:
+                print("Tune too short.")
+
+        return inputVector, outputVector
+
