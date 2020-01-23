@@ -5,6 +5,7 @@ import keras, np_utils, numpy
 from common import Note
 from MusicConverter import *
 import numpy as np
+import time
 
 tunes = TuneLoader.TuneLoader("ABC/*")
 
@@ -140,6 +141,8 @@ print("1.2 / 9.1 --- 50 EPOCH")
 model.fit(input, output, epochs=10, batch_size=15, verbose=2)
 model.save("weights/12_duration-duration_sequence20_epoch50_LLD_WD")
 
+
+time.sleep(20*60)
 ###########################################   2.0   #############################################
 print("2.0 / 9.1 START")
 
@@ -270,6 +273,7 @@ print("3.0 / 9.1 --- 150 EPOCH")
 model.fit(input, output, epochs=50, batch_size=15, verbose=2)
 model.save("weights/30_note-duration_sequence20_epoch150_LLDD_WD")
 
+time.sleep(60*60)
 ###########################################   3.1   #############################################
 print("3.1 / 9.1 START")
 
@@ -312,6 +316,7 @@ print("3.1 / 9.1 --- 150 EPOCH")
 model.fit(input, output, epochs=50, batch_size=15, verbose=2)
 model.save("weights/31_note-duration_sequence10_epoch150_LLDD_WD")
 
+time.sleep(20*60)
 ###########################################   4.0   #############################################
 print("4.0 / 9.1 START")
 
@@ -392,6 +397,8 @@ print("4.1 / 9.1 --- 60 EPOCH")
 model.fit(input, output, epochs=20, batch_size=15, verbose=2)
 model.save("weights/41_pitch-pitch_sequence15_epoch60_LLD_WD")
 
+
+time.sleep(20*60)
 ###########################################   4.2   #############################################
 print("4.2 / 9.1 START")
 
@@ -512,6 +519,8 @@ print("5.1 / 9.1 --- 60 EPOCH")
 model.fit(input, output, epochs=20, batch_size=15, verbose=2)
 model.save("weights/51_pitch-pitch_sequence20_epoch60_LBLD_WD")
 
+
+time.sleep(60*60)
 ###########################################   6.0   #############################################
 print("6.0 / 9.1 START")
 
@@ -550,6 +559,7 @@ print("6.0 / 9.1 --- 150 EPOCH")
 model.fit(input, output, epochs=50, batch_size=15, verbose=2)
 model.save("weights/60_note-pitch_sequence20_epoch150_LLDD_WD")
 
+time.sleep(60*60)
 ###########################################   6.1   #############################################
 print("6.1 / 9.1 START")
 
@@ -588,6 +598,8 @@ print("6.1 / 9.1 --- 150 EPOCH")
 model.fit(input, output, epochs=50, batch_size=15, verbose=2)
 model.save("weights/61_note-pitch_sequence10_epoch150_LLDD_WD")
 
+
+time.sleep(20*60)
 ###########################################   7.0   #############################################
 print("7.0 / 9.1 START")
 
@@ -630,6 +642,7 @@ print("7.0 / 9.1 --- 250 EPOCH")
 model.fit(input, output, epochs=50, batch_size=15, verbose=2)
 model.save("weights/70_note-note_sequence10_epoch250_LLLLD_WD")
 
+time.sleep(20*60)
 ###########################################   7.1   #############################################
 print("7.1 / 9.1 START")
 
@@ -672,6 +685,7 @@ print("7.1 / 9.1 --- 250 EPOCH")
 model.fit(input, output, epochs=50, batch_size=15, verbose=2)
 model.save("weights/71_note-note_sequence20_epoch250_LLLLD_WD")
 
+time.sleep(60*60)
 ###########################################   8.0   #############################################
 print("8.0 / 9.1 START")
 
@@ -715,6 +729,7 @@ print("8.0 / 9.1 --- 250 EPOCH")
 model.fit(input, output, epochs=50, batch_size=15, verbose=2)
 model.save("weights/80_note-note_sequence10_epoch250_LLBLLDD_WD")
 
+time.sleep(60*60)
 ###########################################   8.1   #############################################
 print("8.1 / 9.1 START")
 
@@ -758,6 +773,7 @@ print("8.1 / 9.1 --- 250 EPOCH")
 model.fit(input, output, epochs=50, batch_size=15, verbose=2)
 model.save("weights/81_note-note_sequence20_epoch250_LLBLLDD_WD")
 
+time.sleep(60*60)
 ###########################################   8.2   #############################################
 print("8.2 / 9.1 START")
 

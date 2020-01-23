@@ -22,6 +22,11 @@ def compareNewMelody(newMelody):
     print(found)
     return
 
-def createBaggingEnsembles(input, output):
-    pass
+def updateNoteInput(input, note):
+    input = input[1:]
+    input.append(newNote.getOneHot())
+
+def updatePoDInput(input, PoD):
+    input = input[1:]
+    input.append(PoD)
 

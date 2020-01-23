@@ -30,9 +30,22 @@ class NeuralNetwork:
             input = numpy.reshape(starter, (1, SEQUENCE_LEN, 450))
             prediction = self.model.predict(input, verbose = 0)
             index = numpy.argmax(prediction)
-            newNote = Note.Note(prediction, prediction)
+            newNote = Note.Note([], [])
             newNote.setFromIndex(index)
             melody.append(newNote)
             starter = starter[1:]
             starter.append(newNote.getOneHot())
         return melody
+
+    def pod_generation(self, input, shape):
+        starter = numpy.reshape(input, shape)
+        return self.model.predict(starter, verbose = 0)
+
+    def note_generation(self, input, shape):
+        starter = numpy.reshape(input, shape)
+        prediction = self.model.predict(starter, verbose=0)
+        index = numpy.argmax(prediction)
+        newNote = Note.Note([], [])
+        newNote.setFromIndex(index)
+        return newNote
+
