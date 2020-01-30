@@ -3,7 +3,7 @@
 import numpy as np
 
 PITCH_VEC_SIZE = 45
-DURATION_VEC_SIZE = 80
+DURATION_VEC_SIZE = 10
 
 ## @class Note
 class Note:
