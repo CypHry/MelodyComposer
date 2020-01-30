@@ -5,7 +5,7 @@ from MusicConverter import MusicConverter, MUSIC_STREAM
 import numpy as np
 from utils import compareNewMelody
 
-filepath = "weights/2L_1L1BL_WD_model"
+filepath = "weights/70_note-note_sequence10_epoch250_LLLLD_WD"
 
 GenNN = NeuralNetwork.NeuralNetwork()
 GenNN.load_model(filepath)

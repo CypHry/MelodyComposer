@@ -6,26 +6,28 @@ from MusicConverter import MusicConverter, MUSIC_STREAM
 
 ############################################################################
 
-modelFilepath = "weights/note-note"
-sequenceLength = 0
+modelFilepath = "../weights/82_note-note_sequence40_epoch100_LLBLLDD_WD"
+sequenceLength = 40
 
-newMelodyLength = 0
-starter = Tune.Tune("ABC/ABCChina06")
+newMelodyLength = 50
+starter = Tune.Tune("../ABC/ABCChina06")
 
+inputIndex = 0
 ############################################################################
 
 environment.set('musicxmlPath', '/bin/musescore3' )
 
 model = NeuralNetwork.NeuralNetwork()
 model.load_model(modelFilepath)
-input, temp = starter.getTrainData(sequenceLength)
+starterInput, temp = starter.getTrainData(sequenceLength)
+input = starterInput[inputIndex]
 inputShape = (1, sequenceLength, len(input[0]))
 
 melody = []
 for noteIndex in range(newMelodyLength):
     melody.append(model.note_generation(input, inputShape))
-    updateNoteInput(input, melody[-1])
+    input = updateNoteInput(input, melody[-1])
 
 MusicConverter.convert(melody, MUSIC_STREAM).show('musicxml')
-compareNewMelody(newMelody)
+compareNewMelody(melody)
 

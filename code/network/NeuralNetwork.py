@@ -3,7 +3,7 @@ from keras.layers import Dense, LSTM, Dropout, Activation, Bidirectional
 import keras, np_utils, numpy
 from common import Note
 
-SEQUENCE_LEN = 15
+SEQUENCE_LEN = 10
 
 class NeuralNetwork:
     def __init__(self):
@@ -39,7 +39,11 @@ class NeuralNetwork:
 
     def pod_generation(self, input, shape):
         starter = numpy.reshape(input, shape)
-        return self.model.predict(starter, verbose = 0)
+        prediction = self.model.predict(starter, verbose = 0)
+        index = numpy.argmax(prediction)
+        newPoD = [0]*len(prediction[0])
+        newPoD[index] = 1
+        return newPoD
 
     def note_generation(self, input, shape):
         starter = numpy.reshape(input, shape)

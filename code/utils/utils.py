@@ -5,7 +5,7 @@ from MusicConverter import MusicConverter, MUSIC_STREAM
 import numpy as np
 
 def compareNewMelody(newMelody):
-    tunes = TuneLoader.TuneLoader("ABC/*")
+    tunes = TuneLoader.TuneLoader("../ABC/*")
     found = 0;
     for tune in tunes.tunes:
         inTune = 0
@@ -23,10 +23,12 @@ def compareNewMelody(newMelody):
     return
 
 def updateNoteInput(input, note):
-    input = input[1:]
-    input.append(newNote.getOneHot())
+    newInput = input[1:]
+    newInput.append(note.getOneHot())
+    return newInput
 
 def updatePoDInput(input, PoD):
-    input = input[1:]
-    input.append(PoD)
+    newInput = input[1:]
+    newInput.append(PoD)
+    return newInput
 
